@@ -11,11 +11,10 @@ import tensorflow as tf
 from sacred           import Experiment
 from keras.optimizers import SGD
 from keras.models     import load_model
-from preprocess       import extend
 from callbacks        import IncEpochsFileCallback, tb_logger
 from config           import config
 
-ex = Experiment('ccore_cnn')
+ex = Experiment('jhu')
 
 # connect the experiment to the imported modules
 IncEpochsFileCallback.on_epoch_end = \
@@ -28,24 +27,19 @@ def save(model, savefile):
     model.save(savefile)
 
 @ex.capture
-def train(model, data, labels, epochs_elapsed, epochs, batch_size, n_test, nb_train):
-    # generate validation data using the generator
-    generator = extend(data, labels)
-    validation_data = [generator.__next__() for _ in range(n_test)]
-    test_data, test_labels = zip(*validation_data)
-    test_data = np.asarray([datum[0] for datum in test_data])
-    test_labels = np.asarray(labels[:len(test_data)])
-    assert len(test_data) == len(test_labels)
-
+def train(model, data, labels, epochs_elapsed, epochs, batch_size, n_test):
     tb_log = tb_logger()
-    model.fit_generator( \
-            extend(data, labels), \
-            steps_per_epoch=nb_train, \
+
+    p_test = n_test / len(data)
+
+    model.fit( \
+            data, \
+            labels, \
+            batch_size=batch_size, \
             epochs=epochs_elapsed+epochs, \
             initial_epoch=epochs_elapsed, \
-            verbose=1, \
             callbacks=[tb_log, IncEpochsFileCallback()], \
-            validation_data=[test_data, test_labels])
+            validation_split=p_test)
 
 @ex.automain
 def run(savefile, lr):
@@ -57,8 +51,8 @@ def run(savefile, lr):
         print('Saved model not found. Making new model...')
         from model import model
 
-    model.compile(loss='binary_crossentropy', optimizer=SGD(lr=lr, \
-        clipnorm=1.), metrics=['accuracy'])
+    optimizer = SGD(lr=lr, clipnorm=1.)
+    model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
     train(model)
     save(model)

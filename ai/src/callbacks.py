@@ -7,7 +7,6 @@
 import numpy as np
 from sacred           import Experiment
 from keras.callbacks  import Callback, TensorBoard
-from preprocess       import extend
 
 class IncEpochsFileCallback(Callback):
     def on_epoch_end(self, epoch, logs={}):
@@ -23,7 +22,7 @@ def tb_logger(n_test, log_dir, batch_size):
             histogram_freq=1, \
             batch_size=batch_size, \
             write_graph=True, \
-            write_grads=False, \
+            write_grads=True, \
             write_images=True, \
             embeddings_freq=0, \
             embeddings_layer_names=None, \
