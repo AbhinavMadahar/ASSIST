@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>ASSIST</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+</html>
+
+<form action="">
+  <h1>ASSIST (Assesment of Stroke Survival in Short Term)</h1>
+  
+  <!--- Yes or no to stroke -->
+  <legend>Have you had a stroke?</legend>
+  <div class="radio">
+    <label class="radio-inline"><input type="radio" name="stroke-boolean">Yes</label>
+    <label class="radio-inline"><input type="radio" name="stroke-boolean">No</label>
+  </div>
+ 
+ <!--- Stroke Type -->
+ <div class="form-group">
+   <label for="stroke-type">Stroke Type:</label>
+   <select class="form-control" id="stroke-type" placeholder="Select Stroke Type" >
+     <option>Ischameic Stroke</option>
+     <option>Haemorrhagic Stroke</option>
+     <option>Indeterminate Stroke</option>
+   </select>
+  </div>
+   
+  <!--- Symptoms -->
+  <legend>Symptoms (Check those that apply)</legend>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id=face-deficit>
+    <label class="form-check-label" for="face-deficit">Face Deficit</label>
+  </div>
+   <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id=arm-hand-deficit>
+    <label class="form-check-label" for="arm-hand-deficit">Arm/Hand Deficit </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id=leg-foot-deficit>
+    <label class="form-check-label" for="leg-foot-deficit">Leg Foot Deficit</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id=dysphasia>
+    <label class="form-check-label" for="dysphasia">Dysphasia</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id=hemianopia>
+    <label class="form-check-label" for="hemianopia">Hemianopia</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id=visuospatial-disorder>
+    <label class="form-check-label" for="visuospatial-disord">Visuspatial Disorder</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id=cerebellar-signs>
+    <label class="form-check-label" for="cerebellar-signs">Cerebellar Signs</label>
+  </div>
+       
+  <button type="submit" class"btn btn-default">Submit</button>
+       
+</form>
