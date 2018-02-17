@@ -1,20 +1,13 @@
-# Jack
+# ASSIST AI
 
-This is a model made for Kaggle's [Statoil/C-CORE Iceberg Classifier
-Challenge](https://www.kaggle.com/c/statoil-iceberg-classifier-challenge).
+This is the AI powering ASSIST. It is based on a neural network.
 
-Please make sure to install everything in requirements.txt with pip3 using
-```bash
-pip3 -r requirements.txt
+To use it, run
+```sh
+./bin/prognosis
 ```
+and fill out the fields it requests by passing them into STDIN.
 
-The model itself is defined in `model.py`. To train the model, run
-```bash
-./train.py
-```
-replacing the variables with the proper values.
-
-It uses Python 3.
-
-The data files are too large to store on GitHub, so please download them from
-Kaggle. We will supply a pretrained model once we find something that works.
+Do **NOT** interact with the AI by directly calling a file in `src/`. These
+files may change name or structure, which can break other parts of the code.
+Instead, always only use files in `bin/`, which are much more stable.
