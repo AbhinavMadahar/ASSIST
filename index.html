@@ -11,25 +11,24 @@
 <form action="">
   <h1>ASSIST (Assesment of Stroke Survival in Short Term)</h1>
   
-  <!--- Yes or no to stroke -->
-  <legend>Have you had a stroke?</legend>
-  <div class="radio">
-    <label class="radio-inline"><input type="radio" name="stroke-boolean">Yes</label>
-    <label class="radio-inline"><input type="radio" name="stroke-boolean">No</label>
+  <!--- Age -->
+  <div class="age">
+    <legend>Age</legend>
+    <input type="number" name="age" value="">
   </div>
+
+  <!-- Gender -->
+  <div>
+    <legend>Gender</legend>
+    <input type="radio" name="gender" value="Male">Male
+    <input type="radio" name="gender" value="Female">Female
+  </div>
+
  
- <!--- Stroke Type -->
- <div class="form-group">
-   <label for="stroke-type">Stroke Type:</label>
-   <select class="form-control" id="stroke-type" placeholder="Select Stroke Type" >
-     <option>Ischameic Stroke</option>
-     <option>Haemorrhagic Stroke</option>
-     <option>Indeterminate Stroke</option>
-   </select>
-  </div>
+
    
   <!--- Symptoms -->
-  <legend>Symptoms (Check those that apply)</legend>
+  <legend>Symptoms (Check those that apply to you)</legend>
   <div class="form-check">
     <input class="form-check-input" type="checkbox" value="" id=face-deficit>
     <label class="form-check-label" for="face-deficit">Face Deficit</label>
@@ -40,7 +39,7 @@
   </div>
   <div class="form-check">
     <input class="form-check-input" type="checkbox" value="" id=leg-foot-deficit>
-    <label class="form-check-label" for="leg-foot-deficit">Leg Foot Deficit</label>
+    <label class="form-check-label" for="leg-foot-deficit">Leg/Foot Deficit</label>
   </div>
   <div class="form-check">
     <input class="form-check-input" type="checkbox" value="" id=dysphasia>
@@ -57,6 +56,36 @@
   <div class="form-check">
     <input class="form-check-input" type="checkbox" value="" id=cerebellar-signs>
     <label class="form-check-label" for="cerebellar-signs">Cerebellar Signs</label>
+  </div>
+
+  <!-- Treatments -->
+  <legend>Treatments</legend>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id=aspirin>
+    <label class="form-check-label" for="aspirn">Aspirin allocated</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id=carotid>
+    <label class="form-check-label" for="carotid">Carotid Surgery</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id=thromb>
+    <label class="form-check-label" for="thromb">Thrombolysis</label>
+  </div>
+
+  <!-- Any Second Strokes/Symptoms After Hospitalized -->
+  <legend>Any Second Strokes/Symptoms After Hospitalized</legend>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id=stroke_14>
+    <label class="form-check-label" for="stroke_14">Stroke in the last 14 days.</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id=haem_14>
+    <label class="form-check-label" for="haem_14">Hemmorhages in the last 14 days.</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id=pulm_14>
+    <label class="form-check-label" for="pulm_14">Pulmonary embolisms in the last 14 days.</label>
   </div>
        
   <button type="submit" class"btn btn-default">Submit</button>
