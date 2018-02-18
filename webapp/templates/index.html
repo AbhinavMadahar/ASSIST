@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 {% if session['logged_in'] %}
-   
+
 	{% if data %}
 	<h3>{{data}}</h3>
 	{% else %}
@@ -9,21 +9,21 @@
 	<!-- Assist app content goes here -->
 	<div id="form">
 		<h1>ASSIST (Assesment of Stroke Survival in Short Term)</h1>
-	  
+
 		<!--- Age -->
 		<div class="age">
 		  <legend>Age</legend>
 		  <input type="number" id="age">
 		</div>
-	  
+
 		<!-- Gender -->
 		<div>
 		  <legend>Gender</legend>
 		  <input type="radio" id="male" name="gender">Male
 		  <input type="radio" id="female" name="gender">Female
 		</div>
-	  
-	  
+
+
 		<!--- Symptoms -->
 		<legend>Symptoms (Check those that apply to you)</legend>
 		<div class="form-check">
@@ -54,7 +54,7 @@
 		  <input class="form-check-input" type="checkbox" value="" id="cerebellar-signs">
 		  <label class="form-check-label" for="cerebellar-signs">Cerebellar Signs</label>
 		</div>
-	  
+
 		<!-- Treatments -->
 		<legend>Treatments</legend>
 		<div class="form-check">
@@ -69,7 +69,7 @@
 		  <input class="form-check-input" type="checkbox" value="" id="thromb">
 		  <label class="form-check-label" for="thromb">Thrombolysis</label>
 		</div>
-	  
+
 		<!-- Any Second Strokes/Symptoms After Hospitalized -->
 		<legend>Any Second Strokes/Symptoms After Hospitalized</legend>
 		<div class="form-check">
@@ -84,12 +84,12 @@
 		  <input class="form-check-input" type="checkbox" value="" id="pulm_14">
 		  <label class="form-check-label" for="pulm_14">Pulmonary embolisms in the last 14 days.</label>
 		</div>
-	  
+
 		<button id="submit">Submit</button>
-	  
+
 	  </div>
-	  
-	  
+
+
 	  <script>
 		function results() {
 			var age = document.getElementById('age').value;
@@ -107,7 +107,7 @@
 			var stroke_14 = 0;
 			var haem_14 = 0;
 			var pulm_14 = 0;
-	  
+
 			if (document.getElementById('female').checked)
 				gender = 1;
 			if (document.getElementById('face-deficit').checked)
@@ -136,10 +136,10 @@
 				haem_14 = 1;
 			if (document.getElementById('pulm_14').checked)
 				pulm_14 = 1;
-	  
-			window.location.href = `http://localhost:8888/prognosis?age=${age}&gender=${gender}&face=${face}&arm=${arm}&leg=${leg}&dysphasia=${dys}&hemianopia=${hemi}&visuospatial=${visuo}&cerebellar=${cereb}&aspirin=${aspirin}&carotid=${carotid}&thromb=${thromb}&stroke_14=${stroke_14}&haem_14=${haem_14}&pulm_14=${pulm_14}`
+
+			window.location.href = `http://abhinavmadahar.com:8080/prognosis?age=${age}&gender=${gender}&face=${face}&arm=${arm}&leg=${leg}&dysphasia=${dys}&hemianopia=${hemi}&visuospatial=${visuo}&cerebellar=${cereb}&aspirin=${aspirin}&carotid=${carotid}&thromb=${thromb}&stroke_14=${stroke_14}&haem_14=${haem_14}&pulm_14=${pulm_14}`
 		};
-	  
+
 		document.getElementById('submit').onclick = results;
 		</script>
 	{% endif %}
@@ -147,7 +147,7 @@
 {% else %}
 <p>Not login!</p>
 
-<a href="/login">Login</a> 
+<a href="/login">Login</a>
 <a href="/register">Register</a>
 
 {% endif %}

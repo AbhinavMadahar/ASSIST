@@ -1,0 +1,128 @@
+I180218 13:48:50.202076 1 util/log/clog.go:1041  [config] file created at: 2018/02/18 13:48:50
+I180218 13:48:50.202076 1 util/log/clog.go:1041  [config] running on machine: Shannon
+I180218 13:48:50.202076 1 util/log/clog.go:1041  [config] binary: CockroachDB CCL v1.1.5 (linux amd64, built 2018/02/05 17:40:57, go1.8.3)
+I180218 13:48:50.202076 1 util/log/clog.go:1041  [config] arguments: [cockroach start --insecure --store=hello-1 --host=localhost]
+I180218 13:48:50.202076 1 util/log/clog.go:1041  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg utf8=✓
+W180218 13:48:50.202072 1 cli/start.go:777  RUNNING IN INSECURE MODE!
+
+- Your cluster is open for any client that can access localhost.
+- Any user, even root, can log in without providing a password.
+- Any user, connecting as root, can read or write any data in your cluster.
+- There is no network encryption nor authentication, and thus no confidentiality.
+
+Check out how to secure your cluster: https://www.cockroachlabs.com/docs/stable/secure-a-cluster.html
+I180218 13:48:50.203037 1 server/config.go:323  available memory from cgroups (8.0 EiB) exceeds system memory 488 MiB, using system memory
+W180218 13:48:50.203062 1 cli/start.go:697  Using the default setting for --cache (128 MiB).
+  A significantly larger value is usually needed for good performance.
+  If you have a dedicated server a reasonable setting is --cache=25% (122 MiB).
+I180218 13:48:50.203111 1 cli/start.go:785  CockroachDB CCL v1.1.5 (linux amd64, built 2018/02/05 17:40:57, go1.8.3)
+I180218 13:48:50.304306 1 server/config.go:323  available memory from cgroups (8.0 EiB) exceeds system memory 488 MiB, using system memory
+I180218 13:48:50.304347 1 server/config.go:436  system total memory: 488 MiB
+I180218 13:48:50.304422 1 server/config.go:438  server configuration:
+max offset                500000000
+cache size                128 MiB
+SQL memory pool size      128 MiB
+scan interval             10m0s
+scan max idle time        200ms
+metrics sample interval   10s
+event log enabled         true
+linearizable              false
+I180218 13:48:50.304656 13 cli/start.go:503  starting cockroach node
+I180218 13:48:50.309525 13 storage/engine/rocksdb.go:411  opening rocksdb instance at "/home/abhinav/side-projects/john-hopkin-univerity/hello-1/local"
+I180218 13:48:50.321121 13 storage/engine/rocksdb.go:411  opening rocksdb instance at "/home/abhinav/side-projects/john-hopkin-univerity/hello-1"
+I180218 13:48:50.330329 13 server/config.go:542  [n?] 1 storage engine initialized
+I180218 13:48:50.330356 13 server/config.go:544  [n?] RocksDB cache size: 128 MiB
+I180218 13:48:50.330369 13 server/config.go:544  [n?] store 0: RocksDB, max size 0 B, max open file limit 10000
+I180218 13:48:50.340395 13 server/node.go:344  [n?] **** cluster 7da57437-b6e0-42ee-b295-0702a58f95f0 has been created
+I180218 13:48:50.340427 13 server/server.go:837  [n?] **** add additional nodes by specifying --join=localhost:26257
+I180218 13:48:50.341598 13 storage/store.go:1204  [n1,s1] [n1,s1]: failed initial metrics computation: [n1,s1]: system config not yet available
+I180218 13:48:50.341831 13 server/node.go:461  [n1] initialized store [n1,s1]: disk (capacity=19 GiB, available=9.3 GiB, used=16 KiB, logicalBytes=3.2 KiB), ranges=1, leases=0, writes=0.00, bytesPerReplica={p10=3266.00 p25=3266.00 p50=3266.00 p75=3266.00 p90=3266.00}, writesPerReplica={p10=0.00 p25=0.00 p50=0.00 p75=0.00 p90=0.00}
+I180218 13:48:50.341866 13 server/node.go:326  [n1] node ID 1 initialized
+I180218 13:48:50.342251 13 gossip/gossip.go:327  [n1] NodeDescriptor set to node_id:1 address:<network_field:"tcp" address_field:"localhost:26257" > attrs:<> locality:<> ServerVersion:<major_val:1 minor_val:1 patch:0 unstable:0 > 
+I180218 13:48:50.342496 13 storage/stores.go:303  [n1] read 0 node addresses from persistent storage
+I180218 13:48:50.342656 13 server/node.go:606  [n1] connecting to gossip network to verify cluster ID...
+I180218 13:48:50.345050 13 server/node.go:631  [n1] node connected via gossip and verified as part of cluster "7da57437-b6e0-42ee-b295-0702a58f95f0"
+I180218 13:48:50.345087 13 server/node.go:403  [n1] node=1: started with [<no-attributes>=/home/abhinav/side-projects/john-hopkin-univerity/hello-1] engine(s) and attributes []
+I180218 13:48:50.345697 13 sql/executor.go:408  [n1] creating distSQLPlanner with address {tcp localhost:26257}
+I180218 13:48:50.365445 71 storage/replica_command.go:2734  [split,n1,s1,r1/1:/M{in-ax}] initiating a split of this range at key /System/"" [r2]
+E180218 13:48:50.377617 72 storage/queue.go:663  [replicate,n1,s1,r1/1:/{Min-System/}] range requires a replication change, but lacks a quorum of live replicas (0/1)
+I180218 13:48:50.406763 13 server/server.go:948  [n1] starting http server at localhost:8080
+I180218 13:48:50.406787 13 server/server.go:949  [n1] starting grpc/postgres server at localhost:26257
+I180218 13:48:50.406804 13 server/server.go:950  [n1] advertising CockroachDB node at localhost:26257
+W180218 13:48:50.406860 13 sql/jobs/registry.go:156  [n1] unable to get node liveness: node not in the liveness table
+I180218 13:48:50.420217 13 sql/event_log.go:102  [n1] Event: "alter_table", target: 12, info: {TableName:eventlog Statement:ALTER TABLE system.eventlog ALTER COLUMN "uniqueID" SET DEFAULT uuid_v4() User:node MutationID:0 CascadeDroppedViews:[]}
+I180218 13:48:50.426583 13 sql/lease.go:342  [n1] publish: descID=12 (eventlog) version=2 mtime=2018-02-18 13:48:50.42624267 +0000 UTC
+I180218 13:48:50.457453 13 sql/event_log.go:102  [n1] Event: "set_cluster_setting", target: 0, info: {SettingName:diagnostics.reporting.enabled Value:true User:node}
+I180218 13:48:50.479418 13 sql/event_log.go:102  [n1] Event: "set_cluster_setting", target: 0, info: {SettingName:version Value:1.1 User:node}
+I180218 13:48:50.488337 13 sql/event_log.go:102  [n1] Event: "set_cluster_setting", target: 0, info: {SettingName:trace.debug.enable Value:false User:node}
+I180218 13:48:50.491191 13 server/server.go:1092  [n1] done ensuring all necessary migrations have run
+I180218 13:48:50.491212 13 server/server.go:1094  [n1] serving sql connections
+I180218 13:48:50.491324 13 cli/start.go:582  node startup completed:
+CockroachDB node starting at 2018-02-18 13:48:50.491247213 +0000 UTC (took 0.3s)
+build:      CCL v1.1.5 @ 2018/02/05 17:40:57 (go1.8.3)
+admin:      http://localhost:8080
+sql:        postgresql://root@localhost:26257?application_name=cockroach&sslmode=disable
+logs:       /home/abhinav/side-projects/john-hopkin-univerity/hello-1/logs
+store[0]:   path=/home/abhinav/side-projects/john-hopkin-univerity/hello-1
+status:     initialized new cluster
+clusterID:  7da57437-b6e0-42ee-b295-0702a58f95f0
+nodeID:     1
+I180218 13:48:50.493971 71 storage/replica_command.go:2734  [split,n1,s1,r2/1:/{System/-Max}] initiating a split of this range at key /System/NodeLiveness [r3]
+I180218 13:48:50.508590 287 sql/event_log.go:102  [n1] Event: "node_join", target: 1, info: {Descriptor:{NodeID:1 Address:{NetworkField:tcp AddressField:localhost:26257} Attrs: Locality: ServerVersion:1.1} ClusterID:7da57437-b6e0-42ee-b295-0702a58f95f0 StartedAt:1518961730345058343 LastUp:1518961730345058343}
+I180218 13:48:50.521867 71 storage/replica_command.go:2734  [split,n1,s1,r3/1:/{System/NodeL…-Max}] initiating a split of this range at key /System/NodeLivenessMax [r4]
+I180218 13:48:50.536696 71 storage/replica_command.go:2734  [split,n1,s1,r4/1:/{System/NodeL…-Max}] initiating a split of this range at key /System/tsd [r5]
+I180218 13:48:50.551209 71 storage/replica_command.go:2734  [split,n1,s1,r5/1:/{System/tsd-Max}] initiating a split of this range at key /System/"tse" [r6]
+I180218 13:48:50.584921 71 storage/replica_command.go:2734  [split,n1,s1,r6/1:/{System/tse-Max}] initiating a split of this range at key /Table/SystemConfigSpan/Start [r7]
+I180218 13:48:50.600921 71 storage/replica_command.go:2734  [split,n1,s1,r7/1:/{Table/System…-Max}] initiating a split of this range at key /Table/11 [r8]
+I180218 13:48:50.639748 71 storage/replica_command.go:2734  [split,n1,s1,r8/1:/{Table/11-Max}] initiating a split of this range at key /Table/12 [r9]
+I180218 13:48:50.670028 71 storage/replica_command.go:2734  [split,n1,s1,r9/1:/{Table/12-Max}] initiating a split of this range at key /Table/13 [r10]
+I180218 13:48:50.685987 71 storage/replica_command.go:2734  [split,n1,s1,r10/1:/{Table/13-Max}] initiating a split of this range at key /Table/14 [r11]
+I180218 13:48:50.702305 71 storage/replica_command.go:2734  [split,n1,s1,r11/1:/{Table/14-Max}] initiating a split of this range at key /Table/15 [r12]
+I180218 13:48:50.718660 71 storage/replica_command.go:2734  [split,n1,s1,r12/1:/{Table/15-Max}] initiating a split of this range at key /Table/16 [r13]
+I180218 13:48:50.733777 71 storage/replica_command.go:2734  [split,n1,s1,r13/1:/{Table/16-Max}] initiating a split of this range at key /Table/17 [r14]
+I180218 13:48:50.757572 71 storage/replica_command.go:2734  [split,n1,s1,r14/1:/{Table/17-Max}] initiating a split of this range at key /Table/18 [r15]
+I180218 13:48:50.779234 71 storage/replica_command.go:2734  [split,n1,s1,r15/1:/{Table/18-Max}] initiating a split of this range at key /Table/19 [r16]
+I180218 13:49:00.380138 79 storage/store.go:4183  [n1,s1] sstables (read amplification = 0):
+I180218 13:49:00.380298 79 storage/store.go:4184  [n1,s1] 
+** Compaction Stats [default] **
+Level    Files   Size     Score Read(GB)  Rn(GB) Rnp1(GB) Write(GB) Wnew(GB) Moved(GB) W-Amp Rd(MB/s) Wr(MB/s) Comp(sec) Comp(cnt) Avg(sec) KeyIn KeyDrop
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+ Sum      0/0    0.00 KB   0.0      0.0     0.0      0.0       0.0      0.0       0.0   0.0      0.0      0.0         0         0    0.000       0      0
+ Int      0/0    0.00 KB   0.0      0.0     0.0      0.0       0.0      0.0       0.0   0.0      0.0      0.0         0         0    0.000       0      0
+Uptime(secs): 10.1 total, 10.1 interval
+Flush(GB): cumulative 0.000, interval 0.000
+AddFile(GB): cumulative 0.000, interval 0.000
+AddFile(Total Files): cumulative 0, interval 0
+AddFile(L0 Files): cumulative 0, interval 0
+AddFile(Keys): cumulative 0, interval 0
+Cumulative compaction: 0.00 GB write, 0.00 MB/s write, 0.00 GB read, 0.00 MB/s read, 0.0 seconds
+Interval compaction: 0.00 GB write, 0.00 MB/s write, 0.00 GB read, 0.00 MB/s read, 0.0 seconds
+Stalls(count): 0 level0_slowdown, 0 level0_slowdown_with_compaction, 0 level0_numfiles, 0 level0_numfiles_with_compaction, 0 stop for pending_compaction_bytes, 0 slowdown for pending_compaction_bytes, 0 memtable_compaction, 0 memtable_slowdown, interval 0 total count
+I180218 13:49:00.381558 82 server/status/runtime.go:223  [n1] runtime stats: 57 MiB RSS, 101 goroutines, 13 MiB/1.4 MiB/21 MiB GO alloc/idle/total, 10 MiB/12 MiB CGO alloc/total, 0.00cgo/sec, 0.00/0.00 %(u/s)time, 0.00 %gc (8x)
+I180218 13:49:00.381761 53 storage/replica_proposal.go:453  [replicate,n1,s1,r4/1:/System/{NodeLive…-tsd}] new range lease repl=(n1,s1):1 start=0.000000000,0 epo=1 pro=1518961740.379550619,0 following repl=(n1,s1):1 start=0.000000000,0 exp=1518961739.342791160,0 pro=1518961730.342810394,0
+I180218 13:49:00.384659 52 storage/replica_proposal.go:453  [replicate,n1,s1,r5/1:/System/ts{d-e}] new range lease repl=(n1,s1):1 start=0.000000000,0 epo=1 pro=1518961740.383476390,0 following repl=(n1,s1):1 start=0.000000000,0 exp=1518961739.342791160,0 pro=1518961730.342810394,0
+I180218 13:49:00.386372 48 storage/replica_proposal.go:453  [replicate,n1,s1,r11/1:/Table/1{4-5}] new range lease repl=(n1,s1):1 start=0.000000000,0 epo=1 pro=1518961740.384903608,0 following repl=(n1,s1):1 start=0.000000000,0 exp=1518961739.342791160,0 pro=1518961730.342810394,0
+I180218 13:49:00.388211 50 storage/replica_proposal.go:453  [replicate,n1,s1,r9/1:/Table/1{2-3}] new range lease repl=(n1,s1):1 start=0.000000000,0 epo=1 pro=1518961740.386760935,0 following repl=(n1,s1):1 start=0.000000000,0 exp=1518961739.342791160,0 pro=1518961730.342810394,0
+I180218 13:49:00.391593 51 storage/replica_proposal.go:453  [replicate,n1,s1,r16/1:/{Table/19-Max}] new range lease repl=(n1,s1):1 start=0.000000000,0 epo=1 pro=1518961740.390193326,0 following repl=(n1,s1):1 start=0.000000000,0 exp=1518961739.342791160,0 pro=1518961730.342810394,0
+I180218 13:49:00.403189 55 storage/replica_proposal.go:453  [replicate,n1,s1,r10/1:/Table/1{3-4}] new range lease repl=(n1,s1):1 start=0.000000000,0 epo=1 pro=1518961740.391858760,0 following repl=(n1,s1):1 start=0.000000000,0 exp=1518961739.342791160,0 pro=1518961730.342810394,0
+I180218 13:49:00.418572 54 storage/replica_proposal.go:453  [replicate,n1,s1,r8/1:/Table/1{1-2}] new range lease repl=(n1,s1):1 start=0.000000000,0 epo=1 pro=1518961740.403546712,0 following repl=(n1,s1):1 start=0.000000000,0 exp=1518961739.342791160,0 pro=1518961730.342810394,0
+I180218 13:49:00.420586 52 storage/replica_proposal.go:453  [replicate,n1,s1,r6/1:/{System/tse-Table/System…}] new range lease repl=(n1,s1):1 start=0.000000000,0 epo=1 pro=1518961740.418912047,0 following repl=(n1,s1):1 start=0.000000000,0 exp=1518961739.342791160,0 pro=1518961730.342810394,0
+I180218 13:49:00.421840 48 storage/replica_proposal.go:453  [replicate,n1,s1,r7/1:/Table/{SystemCon…-11}] new range lease repl=(n1,s1):1 start=0.000000000,0 epo=1 pro=1518961740.420774864,0 following repl=(n1,s1):1 start=0.000000000,0 exp=1518961739.342791160,0 pro=1518961730.342810394,0
+I180218 13:49:00.423412 50 storage/replica_proposal.go:453  [replicate,n1,s1,r12/1:/Table/1{5-6}] new range lease repl=(n1,s1):1 start=0.000000000,0 epo=1 pro=1518961740.422188669,0 following repl=(n1,s1):1 start=0.000000000,0 exp=1518961739.342791160,0 pro=1518961730.342810394,0
+I180218 13:49:00.424859 49 storage/replica_proposal.go:453  [replicate,n1,s1,r13/1:/Table/1{6-7}] new range lease repl=(n1,s1):1 start=0.000000000,0 epo=1 pro=1518961740.423583942,0 following repl=(n1,s1):1 start=0.000000000,0 exp=1518961739.342791160,0 pro=1518961730.342810394,0
+I180218 13:49:00.426291 51 storage/replica_proposal.go:453  [replicate,n1,s1,r15/1:/Table/1{8-9}] new range lease repl=(n1,s1):1 start=0.000000000,0 epo=1 pro=1518961740.425148825,0 following repl=(n1,s1):1 start=0.000000000,0 exp=1518961739.342791160,0 pro=1518961730.342810394,0
+I180218 13:49:00.427796 55 storage/replica_proposal.go:453  [replicate,n1,s1,r14/1:/Table/1{7-8}] new range lease repl=(n1,s1):1 start=0.000000000,0 epo=1 pro=1518961740.426511998,0 following repl=(n1,s1):1 start=0.000000000,0 exp=1518961739.342791160,0 pro=1518961730.342810394,0
+I180218 13:49:10.379348 82 server/status/runtime.go:223  [n1] runtime stats: 60 MiB RSS, 100 goroutines, 12 MiB/4.0 MiB/24 MiB GO alloc/idle/total, 11 MiB/12 MiB CGO alloc/total, 101.42cgo/sec, 0.01/0.00 %(u/s)time, 0.00 %gc (1x)
+I180218 13:49:20.379250 82 server/status/runtime.go:223  [n1] runtime stats: 62 MiB RSS, 100 goroutines, 18 MiB/928 KiB/26 MiB GO alloc/idle/total, 11 MiB/12 MiB CGO alloc/total, 56.10cgo/sec, 0.01/0.00 %(u/s)time, 0.00 %gc (0x)
+I180218 13:49:30.380094 82 server/status/runtime.go:223  [n1] runtime stats: 64 MiB RSS, 100 goroutines, 13 MiB/5.9 MiB/27 MiB GO alloc/idle/total, 11 MiB/12 MiB CGO alloc/total, 58.00cgo/sec, 0.01/0.00 %(u/s)time, 0.00 %gc (1x)
+I180218 13:49:30.494721 1 cli/start.go:617  received signal 'interrupt'
+I180218 13:49:30.495670 1 cli/start.go:644  initiating graceful shutdown of server
+I180218 13:49:30.500922 303 vendor/google.golang.org/grpc/grpclog/grpclog.go:75  transport: http2Server.HandleStreams failed to read frame: read tcp 127.0.0.1:26257->127.0.0.1:54628: use of closed network connection
+I180218 13:49:30.501254 223 vendor/google.golang.org/grpc/grpclog/grpclog.go:60  transport: http2Client.notifyError got notified that the client transport was broken EOF.
+I180218 13:49:30.503596 123 vendor/google.golang.org/grpc/grpclog/grpclog.go:75  grpc: addrConn.resetTransport failed to create client transport: connection error: desc = "transport: Error while dialing dial tcp: operation was canceled"; Reconnecting to {localhost:26257 <nil>}
+I180218 13:49:30.504544 123 vendor/google.golang.org/grpc/grpclog/grpclog.go:75  grpc: addrConn.transportMonitor exits due to: grpc: the connection is closing
+I180218 13:49:30.503860 694 storage/engine/rocksdb.go:530  closing rocksdb instance at "/home/abhinav/side-projects/john-hopkin-univerity/hello-1/local"
+I180218 13:49:30.506963 694 storage/engine/rocksdb.go:530  closing rocksdb instance at "/home/abhinav/side-projects/john-hopkin-univerity/hello-1"
+I180218 13:49:30.508433 1 cli/start.go:676  server drained and shutdown completed
+E180218 13:49:30.509635 1 cli/error.go:68  interrupted
+Error: interrupted

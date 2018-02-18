@@ -5,8 +5,17 @@ import tensorflow as tf
 from prognosis import probability_of_survival, graph
 
 urls = (
+    '/', 'index',
     '/prognosis', 'prognosis'
 )
+
+class index:
+    def GET(self):
+        page = ''
+        with open('index.html', 'r') as index:
+            for line in index:
+                page += line + '\n'
+        return page
 
 class prognosis:
     def GET(self):
@@ -33,6 +42,13 @@ class prognosis:
         with graph.as_default():
             return str(probability_of_survival(*patient))
 
+class MyApplication(web.application):
+    def run(self, port=8080, *middleware):
+        func = self.wsgifunc(*middleware)
+        return web.httpserver.runsimple(func, ('abhinavmadahar.com', port))
+
 if __name__ == "__main__":
-    app = web.application(urls, globals())
+    app = MyApplication(urls, globals())
+
+    # Shannon keeps
     app.run()
