@@ -5,6 +5,7 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 import csv
+from random import shuffle
 from collections import namedtuple
 
 Patient = namedtuple('Patient', ['age', 'gender', 'face', 'arm', 'leg',
@@ -44,7 +45,8 @@ def open_data(filename):
                 int(patient[107] == 'true'),
                 int(patient[108] == 'true'),
                 ))
-            patients_survived.append(int(patient[93] == 'true'))
-            print(int(patient[93] == 'true'))
+            patients_survived.append(int(patient[93] == 'false'))
 
-    return patients, patients_survived
+    data = list(zip(patients, patients_survived))
+    shuffle(data)
+    return list(zip(*data))

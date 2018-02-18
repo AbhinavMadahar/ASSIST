@@ -8,6 +8,6 @@ from keras.utils import np_utils
 
 model = Sequential([
     Dense(30, input_dim=15, activation='sigmoid'),
-    Dense(10, activation='sigmoid'),
-    Dense(1)
+    Dense(30, activation='sigmoid'),
+	Dense(1)
 ])
