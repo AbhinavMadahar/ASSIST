@@ -10,7 +10,7 @@
 
 <div id="form">
   <h1>ASSIST (Assesment of Stroke Survival in Short Term)</h1>
-  
+
   <!--- Age -->
   <div class="age">
     <legend>Age</legend>
@@ -24,7 +24,7 @@
     <input type="radio" id="female" name="gender">Female
   </div>
 
-   
+
   <!--- Symptoms -->
   <legend>Symptoms (Check those that apply to you)</legend>
   <div class="form-check">
@@ -85,9 +85,9 @@
     <input class="form-check-input" type="checkbox" value="" id="pulm_14">
     <label class="form-check-label" for="pulm_14">Pulmonary embolisms in the last 14 days.</label>
   </div>
-       
+
   <button id="submit">Submit</button>
-       
+
 </div>
 
 
@@ -138,8 +138,8 @@
       if (document.getElementById('pulm_14').checked)
           pulm_14 = 1;
 
-      window.location = `/prognosis?age=${age}&gender=${gender}&face=${face}&arm=${arm}&leg=${leg}&dysphasia=${dys}&hemianopia=${hemi}&visuospatial=${visuo}&cerebellar=${cereb}&aspirin=${aspirin}&carotid=${carotid}&thromb=${thromb}&stroke_14=${stroke_14}&haem_14=${haem_14}&pulm_14=${pulm_14}`
-  }
+      window.location.href = `http://localhost:8080/prognosis?age=${age}&gender=${gender}&face=${face}&arm=${arm}&leg=${leg}&dysphasia=${dys}&hemianopia=${hemi}&visuospatial=${visuo}&cerebellar=${cereb}&aspirin=${aspirin}&carotid=${carotid}&thromb=${thromb}&stroke_14=${stroke_14}&haem_14=${haem_14}&pulm_14=${pulm_14}`
+  };
 
   document.getElementById('submit').onclick = results;
   </script>
