@@ -5,7 +5,7 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 import csv
-from random import shuffle
+from random import shuffle, choice, gauss, random
 from collections import namedtuple
 
 Patient = namedtuple('Patient', ['age', 'gender', 'face', 'arm', 'leg',
@@ -16,7 +16,8 @@ Patient = namedtuple('Patient', ['age', 'gender', 'face', 'arm', 'leg',
 
 # reads the data from the filename and returns the input data and the correct
 # labels
-def open_data(filename):
+# @param n: how many more patients to have in the final output
+def open_data(filename, n=0):
     patients = [] # patient vectors
     patients_survived = []
 
@@ -28,7 +29,7 @@ def open_data(filename):
         patients_file.__next__() # intentionally ignored
 
         for patient in csv.reader(patients_file):
-            patients.append((
+            patients.append([
                 int(patient[4]),
                 int(patient[3] == 'Female'), # 0 for male, 1 for female
                 int(patient[12] == 'yes'),
@@ -44,9 +45,23 @@ def open_data(filename):
                 int(patient[106] == 'true'),
                 int(patient[107] == 'true'),
                 int(patient[108] == 'true'),
-                ))
+                ])
             patients_survived.append(int(patient[93] == 'false'))
 
     data = list(zip(patients, patients_survived))
     shuffle(data)
+
+    if len(data) > n:
+        data = data[n:]
+
+    while len(data) < n:
+        patient, survived = choice(data)[:] # don't change the original
+        patient[0] *= gauss(1, 0.01) # randomly slightly change their age
+
+        prob_switching = 0.05
+        for i in range(1, len(patient)):
+            if random() < prob_switching:
+                patient[i] = 1 - patient[i]
+        data.append((patient, survived))
+
     return list(zip(*data))
