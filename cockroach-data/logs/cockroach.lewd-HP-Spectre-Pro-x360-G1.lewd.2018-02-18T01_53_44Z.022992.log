@@ -1,0 +1,24 @@
+I180218 01:53:44.915140 1 util/log/clog.go:1041  [config] file created at: 2018/02/18 01:53:44
+I180218 01:53:44.915140 1 util/log/clog.go:1041  [config] running on machine: lewd-HP-Spectre-Pro-x360-G1
+I180218 01:53:44.915140 1 util/log/clog.go:1041  [config] binary: CockroachDB CCL v1.1.5 (linux amd64, built 2018/02/05 17:40:57, go1.8.3)
+I180218 01:53:44.915140 1 util/log/clog.go:1041  [config] arguments: [cockroach start]
+I180218 01:53:44.915140 1 util/log/clog.go:1041  line format: [IWEF]yymmdd hh:mm:ss.uuuuuu goid file:line msg utf8=✓
+I180218 01:53:44.915139 1 server/config.go:323  available memory from cgroups (8.0 EiB) exceeds system memory 7.7 GiB, using system memory
+W180218 01:53:44.915308 1 cli/start.go:697  Using the default setting for --cache (128 MiB).
+  A significantly larger value is usually needed for good performance.
+  If you have a dedicated server a reasonable setting is --cache=25% (1.9 GiB).
+I180218 01:53:44.915352 1 cli/start.go:785  CockroachDB CCL v1.1.5 (linux amd64, built 2018/02/05 17:40:57, go1.8.3)
+I180218 01:53:45.016164 1 server/config.go:323  available memory from cgroups (8.0 EiB) exceeds system memory 7.7 GiB, using system memory
+I180218 01:53:45.016216 1 server/config.go:436  system total memory: 7.7 GiB
+I180218 01:53:45.016338 1 server/config.go:438  server configuration:
+max offset                500000000
+cache size                128 MiB
+SQL memory pool size      128 MiB
+scan interval             10m0s
+scan max idle time        200ms
+metrics sample interval   10s
+event log enabled         true
+linearizable              false
+I180218 01:53:45.016948 11 cli/start.go:503  starting cockroach node
+E180218 01:53:45.019552 1 cli/error.go:68  failed to start server: problem using security settings, did you mean to use --insecure?: problem with CA certificate: not found
+Error: failed to start server: problem using security settings, did you mean to use --insecure?: problem with CA certificate: not found
