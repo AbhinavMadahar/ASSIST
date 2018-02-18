@@ -9,9 +9,9 @@ from preprocess import open_data
 def config():
     # set the training variables (NONE of these are model variables)
     data, labels = open_data('../data/patients.csv')
-    epochs = 256
-    batch_size = 32
-    lr = 0.1
+    epochs = 128
+    batch_size = 64
+    lr = 0.01
     savefile = 'model.h5'
     log_dir = 'log'
     epochs_elapsed = 0

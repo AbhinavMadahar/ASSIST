@@ -7,17 +7,16 @@
 import csv
 from collections import namedtuple
 
-Patient = namedtuple('Patient', ['age', 'gender', 'aspirin', 'steroids', 'noncebhaem', 'ischaemic', 'haemorrhagic', 'recurrent', 'haemodilution', 'thromb'])
+Patient = namedtuple('Patient', ['age', 'gender', 'face', 'arm', 'leg',
+    'dysphasia', 'hemianopia', 'visuospatial', 'cerebellar', 'aspirin',
+    'carotid', 'thromb', 'stroke_14', 'haem_14', 'pulm_14'])
 # noncebheam is major non-cerebral haemoraging
 # thromb is thrombolosis
 
 # reads the data from the filename and returns the input data and the correct
 # labels
 def open_data(filename):
-    # we first convert the patients into named tuples with their symptoms/etc.
-    # then we turn them into vectors to be fed into the neural network
-
-    patients = []
+    patients = [] # patient vectors
     patients_survived = []
 
     # generate the named tuples
@@ -28,36 +27,24 @@ def open_data(filename):
         patients_file.__next__() # intentionally ignored
 
         for patient in csv.reader(patients_file):
-            patients.append(Patient(
-                patient[4],
-                patient[3],
-                patient[10] or patient[27] or patient[85],
-                patient[38],
-                patient[43],
-                patient[49],
-                patient[50],
-                # choose recurrent_{haem,isc} based on what they had
-                patient[97] if patient[50] else patient[96],
-                patient[40],
-                patient[42]
+            patients.append((
+                int(patient[4]),
+                int(patient[3] == 'Female'), # 0 for male, 1 for female
+                int(patient[12] == 'yes'),
+                int(patient[13] == 'yes'),
+                int(patient[14] == 'yes'),
+                int(patient[15] == 'yes'),
+                int(patient[16] == 'yes'),
+                int(patient[17] == 'yes'),
+                int(patient[18] == 'yes'),
+                int(patient[25] == 'true'),
+                int(patient[41] == 'yes'),
+                int(patient[42] == 'yes'),
+                int(patient[106] == 'true'),
+                int(patient[107] == 'true'),
+                int(patient[108] == 'true'),
                 ))
-            patients_survived.append(int(patient[65] == 'yes'))
+            patients_survived.append(int(patient[93] == 'true'))
+            print(int(patient[93] == 'true'))
 
-    patient_vectors = []
-
-    for patient in patients:
-        patient_vector = (
-                int(patient.age),
-                int(patient.gender == 'Male'),
-                int(patient.aspirin in ['yes', 'true']),
-                int(patient.steroids == 'yes'),
-                int(patient.noncebhaem == 'yes'),
-                int(patient.ischaemic == 'yes'),
-                int(patient.haemorrhagic == 'yes'),
-                int(patient.recurrent == 'true'),
-                int(patient.haemodilution == 'yes'),
-                int(patient.thromb == 'yes'),
-                )
-        patient_vectors.append(patient_vector)
-
-    return patient_vectors, patients_survived
+    return patients, patients_survived
