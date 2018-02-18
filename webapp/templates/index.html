@@ -6,11 +6,142 @@
 	<h3>{{data}}</h3>
 	{% else %}
 
-	<a href="/logout">Logout</a> <br> <br>
-	<form action="" method="POST">
-	  <input type="username" name="username" placeholder="Instagram Username">
-	  <input type="submit" value="Finds">
-	</form>
+	<!-- Assist app content goes here -->
+	<div id="form">
+		<h1>ASSIST (Assesment of Stroke Survival in Short Term)</h1>
+	  
+		<!--- Age -->
+		<div class="age">
+		  <legend>Age</legend>
+		  <input type="number" id="age">
+		</div>
+	  
+		<!-- Gender -->
+		<div>
+		  <legend>Gender</legend>
+		  <input type="radio" id="male" name="gender">Male
+		  <input type="radio" id="female" name="gender">Female
+		</div>
+	  
+	  
+		<!--- Symptoms -->
+		<legend>Symptoms (Check those that apply to you)</legend>
+		<div class="form-check">
+		  <input class="form-check-input" type="checkbox" id="face-deficit">
+		  <label class="form-check-label" for="face-deficit">Face Deficit</label>
+		</div>
+		 <div class="form-check">
+		  <input class="form-check-input" type="checkbox" value="" id="arm-hand-deficit">
+		  <label class="form-check-label" for="arm-hand-deficit">Arm/Hand Deficit </label>
+		</div>
+		<div class="form-check">
+		  <input class="form-check-input" type="checkbox" value="" id="leg-foot-deficit">
+		  <label class="form-check-label" for="leg-foot-deficit">Leg/Foot Deficit</label>
+		</div>
+		<div class="form-check">
+		  <input class="form-check-input" type="checkbox" value="" id="dysphasia">
+		  <label class="form-check-label" for="dysphasia">Dysphasia</label>
+		</div>
+		<div class="form-check">
+		  <input class="form-check-input" type="checkbox" value="" id="hemianopia">
+		  <label class="form-check-label" for="hemianopia">Hemianopia</label>
+		</div>
+		<div class="form-check">
+		  <input class="form-check-input" type="checkbox" value="" id="visuospatial-disorder">
+		  <label class="form-check-label" for="visuospatial-disorder">Visuspatial Disorder</label>
+		</div>
+		<div class="form-check">
+		  <input class="form-check-input" type="checkbox" value="" id="cerebellar-signs">
+		  <label class="form-check-label" for="cerebellar-signs">Cerebellar Signs</label>
+		</div>
+	  
+		<!-- Treatments -->
+		<legend>Treatments</legend>
+		<div class="form-check">
+		  <input class="form-check-input" type="checkbox" value="" id="aspirin">
+		  <label class="form-check-label" for="aspirin">Aspirin allocated</label>
+		</div>
+		<div class="form-check">
+		  <input class="form-check-input" type="checkbox" value="" id="carotid">
+		  <label class="form-check-label" for="carotid">Carotid Surgery</label>
+		</div>
+		<div class="form-check">
+		  <input class="form-check-input" type="checkbox" value="" id="thromb">
+		  <label class="form-check-label" for="thromb">Thrombolysis</label>
+		</div>
+	  
+		<!-- Any Second Strokes/Symptoms After Hospitalized -->
+		<legend>Any Second Strokes/Symptoms After Hospitalized</legend>
+		<div class="form-check">
+		  <input class="form-check-input" type="checkbox" value="" id="stroke_14">
+		  <label class="form-check-label" for="stroke_14">Stroke in the last 14 days.</label>
+		</div>
+		<div class="form-check">
+		  <input class="form-check-input" type="checkbox" value="" id="haem_14">
+		  <label class="form-check-label" for="haem_14">Hemmorhages in the last 14 days.</label>
+		</div>
+		<div class="form-check">
+		  <input class="form-check-input" type="checkbox" value="" id="pulm_14">
+		  <label class="form-check-label" for="pulm_14">Pulmonary embolisms in the last 14 days.</label>
+		</div>
+	  
+		<button id="submit">Submit</button>
+	  
+	  </div>
+	  
+	  
+	  <script>
+		function results() {
+			var age = document.getElementById('age').value;
+			var gender = 0;
+			var face = 0;
+			var arm = 0;
+			var leg = 0;
+			var dys = 0;
+			var hemi = 0;
+			var visuo = 0;
+			var cereb = 0;
+			var aspirin = 0;
+			var carotid = 0;
+			var thromb = 0;
+			var stroke_14 = 0;
+			var haem_14 = 0;
+			var pulm_14 = 0;
+	  
+			if (document.getElementById('female').checked)
+				gender = 1;
+			if (document.getElementById('face-deficit').checked)
+				face = 1;
+			if (document.getElementById('arm-hand-deficit').checked)
+				arm = 1;
+			if (document.getElementById('leg-foot-deficit').checked)
+				leg = 1;
+			if (document.getElementById('dysphasia').checked)
+				dys = 1;
+			if (document.getElementById('hemianopia').checked)
+				hemi = 1;
+			if (document.getElementById('visuospatial-disorder').checked)
+				visuo = 1;
+			if (document.getElementById('cerebellar-signs').checked)
+				cereb = 1;
+			if (document.getElementById('aspirin').checked)
+				aspirin = 1;
+			if (document.getElementById('carotid').checked)
+				face = 1;
+			if (document.getElementById('thromb').checked)
+				thromb = 1;
+			if (document.getElementById('stroke_14').checked)
+				stroke_14 = 1;
+			if (document.getElementById('haem_14').checked)
+				haem_14 = 1;
+			if (document.getElementById('pulm_14').checked)
+				pulm_14 = 1;
+	  
+			window.location.href = `http://localhost:8888/prognosis?age=${age}&gender=${gender}&face=${face}&arm=${arm}&leg=${leg}&dysphasia=${dys}&hemianopia=${hemi}&visuospatial=${visuo}&cerebellar=${cereb}&aspirin=${aspirin}&carotid=${carotid}&thromb=${thromb}&stroke_14=${stroke_14}&haem_14=${haem_14}&pulm_14=${pulm_14}`
+		};
+	  
+		document.getElementById('submit').onclick = results;
+		</script>
 	{% endif %}
 
 {% else %}
