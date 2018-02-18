@@ -8,14 +8,14 @@ from preprocess import open_data
 
 def config():
     # set the training variables (NONE of these are model variables)
-    data, labels = open_data('../data/patients.csv')
-    epochs = 128
+    data, labels = open_data('../data/patients.csv', 1000000)
+    epochs = 32
     batch_size = 64
     lr = 0.01
     savefile = 'model.h5'
     log_dir = 'log'
     epochs_elapsed = 0
-    n_test = 250 # number of patients to use for testing the neural network
+    n_test = 10000 # number of patients to use for testing the neural network
 
     try:
         with open('epochs.txt', 'r') as epochs_file:
