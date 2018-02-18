@@ -51,7 +51,7 @@ def run(savefile, lr):
         print('Saved model not found. Making new model...')
         from model import model
 
-    optimizer = SGD(lr=lr, clipnorm=1.)
+    optimizer = SGD(lr=lr, clipnorm=1., decay=1e-6, momentum=0.9, nesterov=True)
     model.compile(loss='binary_crossentropy', optimizer='adam', metrics=['accuracy'])
 
     train(model)
