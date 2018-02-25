@@ -1,9 +1,26 @@
-# ASSIST AI
+# Flask Login Example
+This code sample makes use of Flask and Flask-SQLAlchemy, a library that manages User registration, log in, session and logout functionality.
 
-This is the AI powering ASSIST. It is based on a neural network.
+## Requirements.txt
+    Flask
+    Flask-SQLAlchemy
 
-To use it, call the	`probability_of_survival` function in `bin/prognosis`.
+## Setup Repo
+```
+virtualenv -p python3 /.
+source bin/activate
+git clone https://github.com/tolgahanuzun/Flask-Login-Example
+cd Flask-Login-Example
+pip install -r requirements.txt
+python app.py
+```
 
-Do **NOT** interact with the AI by directly calling a file in `src/`. These
-files may change name or structure, which can break other parts of the code.
-Instead, always only use files in `bin/`, which are much more stable.
+![Flask](http://i.hizliresim.com/69pRXk.png)
+
+
+## Example Project
+- The user will be register into the website.
+- The user will be login into the website.
+- The user enters the Instagram profile url system. This action only makes the logged user.
+
+![Flask](http://i.hizliresim.com/yEJd3M.png)
