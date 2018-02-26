@@ -4,6 +4,8 @@ import web
 import tensorflow as tf
 from prognosis import probability_of_survival, graph
 
+hostname = 'localhost'
+
 urls = (
     '/', 'index',
     '/prognosis', 'prognosis'
@@ -45,7 +47,7 @@ class prognosis:
 class MyApplication(web.application):
     def run(self, port=8080, *middleware):
         func = self.wsgifunc(*middleware)
-        return web.httpserver.runsimple(func, ('abhinavmadahar.com', port))
+        return web.httpserver.runsimple(func, (hostname, port))
 
 if __name__ == "__main__":
     app = MyApplication(urls, globals())
